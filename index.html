@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nick Hargreaves</title>
+    <meta
+      name="description"
+      content="Personal website of a technology executive and engineering leader."
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="grid-overlay" aria-hidden="true"></div>
+    <main class="container">
+      <header class="hero">
+        <p class="tag">SYSTEM ONLINE</p>
+        <h1>Nick Hargreaves</h1>
+        <p class="subtitle">
+          Tech Executive, Entrepreneur, Hiker, Runner, Attempter of Hard Things
+        </p>
+      </header>
+
+      <section class="panel links-panel">
+        <div class="links">
+          <a href="https://www.linkedin.com/in/nickhargreaveske/" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+            <span>LinkedIn</span>
+          </a>
+          <a href="https://github.com/nickhargreaves" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-github" aria-hidden="true"></i>
+            <span>GitHub</span>
+          </a>
+          <a href="https://www.strava.com/athletes/36162868" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-strava" aria-hidden="true"></i>
+            <span>Strava</span>
+          </a>
+          <a href="https://medium.com/@nickhargreaves" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-medium" aria-hidden="true"></i>
+            <span>Medium</span>
+          </a>
+          <a href="https://wa.me/254717374752" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+            <span>WhatsApp</span>
+          </a>
+          <a href="https://www.goodreads.com/user/show/16299414-nick-hargreaves" target="_blank" rel="noopener noreferrer">
+            <i class="fa-solid fa-book" aria-hidden="true"></i>
+            <span>Goodreads</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="panel writing-panel">
+        <h2>Latest Writing</h2>
+        <div class="carousel-wrapper">
+          <button class="carousel-btn carousel-prev" aria-label="Previous post">&#8592;</button>
+          <div class="carousel-track-outer">
+            <div class="carousel-track" id="carouselTrack">
+              <div class="carousel-loading">Loading posts&hellip;</div>
+            </div>
+          </div>
+          <button class="carousel-btn carousel-next" aria-label="Next post">&#8594;</button>
+        </div>
+        <div class="carousel-dots" id="carouselDots"></div>
+      </section>
+
+      <section class="panel">
+        <h2>About</h2>
+        <p>
+          I am a technology executive with over 15 years of experience building
+          and leading high-performing engineering teams.
+        </p>
+        <p>
+          As a CTO and engineering leader, I have architected and delivered
+          scalable platforms across multiple industries, including financial
+          services and civic infrastructure. I specialize in backend systems,
+          cloud architecture, and turning complex technical challenges into
+          reliable, production-grade systems.
+        </p>
+        <p>
+          I work with startups and growing companies that need senior technical
+          leadership - whether that is defining architecture, strengthening
+          engineering culture, or scaling teams and infrastructure to the next
+          level.
+        </p>
+      </section>
+
+      <section class="panel">
+        <h2>Experience</h2>
+        <p>
+          I have led engineering organizations from early-stage build to
+          operational scale, overseeing architecture, cloud infrastructure,
+          DevOps practices, and cross-functional delivery.
+        </p>
+        <p>My background includes:</p>
+        <ul>
+          <li>
+            Serving as CTO for a technology company building infrastructure for
+            FinTechs across Africa
+          </li>
+          <li>Leading distributed engineering teams across multiple regions</li>
+          <li>Designing and scaling cloud-native systems on AWS</li>
+          <li>
+            Establishing engineering processes that balance speed, reliability,
+            and long-term maintainability
+          </li>
+        </ul>
+        <p>
+          I have worked across fintech, civic tech, and other sectors -
+          applying the same principle everywhere: strong technical foundations
+          create business leverage.
+        </p>
+      </section>
+
+      <section class="panel">
+        <h2>Latest Projects</h2>
+        <div class="projects">
+          <article class="project-item">
+            <h3>kaziOS</h3>
+            <p>
+              A modular, agentic ERP for growing teams with automated workflows
+              and AI chat assistant.
+            </p>
+            <a href="https://app.kazios.cloud/" target="_blank" rel="noopener noreferrer">Visit kaziOS</a>
+          </article>
+
+          <article class="project-item">
+            <h3>akiliQuest</h3>
+            <p>
+              A gamified learning platform with chat-style questions, stories,
+              leaderboards, streaks, and group trivias.
+            </p>
+            <a href="https://app.akiliquest.com/" target="_blank" rel="noopener noreferrer">Visit akiliQuest</a>
+          </article>
+
+          <article class="project-item">
+            <h3>Hiruko</h3>
+            <p>
+              A technology studio building practical software for businesses,
+              from custom engineering and web development to data pipelines and
+              AI-driven automation.
+            </p>
+            <a href="https://hiruko.xyz/" target="_blank" rel="noopener noreferrer">Visit Hiruko</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Beyond Work</h2>
+        <p>
+          I am drawn to challenges that require endurance and perspective like
+          hiking and running. I also write occasionally about tech and life.
+          You can follow my hiking journey
+          <a href="https://medium.com/high-altitude-therapy" target="_blank" rel="noopener noreferrer">here</a>.
+        </p>
+      </section>
+    </main>
+  <script>
+    (function () {
+      const PROXY = "/feed.php";
+      const track = document.getElementById("carouselTrack");
+      const dotsEl = document.getElementById("carouselDots");
+      let current = 0;
+      let total = 0;
+
+      function stripHtml(html) {
+        const tmp = document.createElement("div");
+        tmp.innerHTML = html;
+        return (tmp.textContent || "").replace(/\s+/g, " ").trim();
+      }
+
+      function extractImage(html) {
+        const tmp = document.createElement("div");
+        tmp.innerHTML = html;
+        const img = tmp.querySelector("img");
+        return img ? img.src : null;
+      }
+
+      function formatDate(str) {
+        return new Date(str).toLocaleDateString("en-GB", { year: "numeric", month: "short", day: "numeric" });
+      }
+
+      function buildDots(n) {
+        dotsEl.innerHTML = "";
+        for (var i = 0; i < n; i++) {
+          var dot = document.createElement("button");
+          dot.className = "carousel-dot";
+          dot.setAttribute("aria-label", "Go to post " + (i + 1));
+          (function (idx) { dot.addEventListener("click", function () { goTo(idx); }); })(i);
+          dotsEl.appendChild(dot);
+        }
+      }
+
+      function updateDots() {
+        var dots = dotsEl.querySelectorAll(".carousel-dot");
+        dots.forEach(function (d, i) { d.classList.toggle("active", i === current); });
+      }
+
+      function render(items) {
+        track.innerHTML = "";
+        total = Math.min(items.length, 5);
+
+        items.slice(0, 5).forEach(function (item) {
+          function tag(name) {
+            var els = item.getElementsByTagName(name);
+            return els.length ? (els[0].textContent || "").trim() : "";
+          }
+          const title   = tag("title");
+          const rawLink = tag("link");
+          const guid    = tag("guid");
+          const link    = (rawLink.startsWith("http") ? rawLink : null) || (guid.startsWith("http") ? guid : null) || "#";
+          const pubDate = tag("pubDate");
+          const encoded = item.getElementsByTagNameNS("*", "encoded")[0];
+          const raw     = encoded ? encoded.textContent : tag("description");
+          const excerpt = stripHtml(raw).slice(0, 150);
+          const imgSrc  = extractImage(raw);
+
+          const card = document.createElement("article");
+          card.className = "carousel-card";
+
+          var imageHtml = imgSrc
+            ? '<div class="card-image"><img src="' + imgSrc + '" alt="" loading="lazy"></div>'
+            : '<div class="card-image card-image--none"></div>';
+
+          card.innerHTML =
+            imageHtml +
+            '<div class="card-body">' +
+              '<p class="card-date">' + formatDate(pubDate) + "</p>" +
+              '<h3 class="card-title">' + title + "</h3>" +
+              '<p class="card-excerpt">' + excerpt + "&hellip;</p>" +
+              '<a class="card-link" href="' + link + '" target="_blank" rel="noopener noreferrer">Read on Medium &#8599;</a>' +
+            "</div>";
+
+          track.appendChild(card);
+        });
+
+        buildDots(total);
+        goTo(0);
+      }
+
+      function goTo(n) {
+        const cards = track.querySelectorAll(".carousel-card");
+        if (!cards.length) return;
+        current = (n + total) % total;
+        track.style.transform = "translateX(-" + (current * cards[0].offsetWidth) + "px)";
+        updateDots();
+      }
+
+      document.querySelector(".carousel-prev").addEventListener("click", function () { goTo(current - 1); });
+      document.querySelector(".carousel-next").addEventListener("click", function () { goTo(current + 1); });
+
+      fetch(PROXY)
+        .then(function (r) { return r.text(); })
+        .then(function (text) {
+          const parser = new DOMParser();
+          const doc    = parser.parseFromString(text, "text/xml");
+          const items  = Array.from(doc.querySelectorAll("item"));
+          if (items.length) {
+            render(items);
+          } else {
+            track.innerHTML = '<p class="carousel-loading">No posts found.</p>';
+          }
+        })
+        .catch(function () {
+          track.innerHTML = '<p class="carousel-loading">Could not load posts.</p>';
+        });
+    })();
+  </script>
+  </body>
+</html>
